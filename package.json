@@ -1,0 +1,29 @@
+{
+  "name": "mws-restaurant-stage-1",
+  "version": "1.0.0",
+  "description": "mws-restaurant-stage-2",
+  "main": "sw.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zakaria1986/mws-restaurant-stage-1.git"
+  },
+  "author": "Zakaria Khan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zakaria1986/mws-restaurant-stage-1/issues"
+  },
+  "homepage": "https://github.com/Zakaria1986/mws-restaurant-stage-1#readme",
+  "dependencies": {
+    "gulp-uglifycss": "^1.1.0",
+    "idb": "^4.0.0"
+  },
+  "devDependencies": {
+    "gulp-clean-css": "^4.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-uglify": "^3.0.2"
+  }
+}

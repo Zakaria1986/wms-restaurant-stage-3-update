@@ -1,0 +1,196 @@
+ @charset "utf-8";
+/* CSS Document */
+
+/*this set the margine between the main container and the body */
+#maincontent {
+  margin: auto;
+  width: 90%;
+}
+nav {
+  height: 55px;
+  padding: 29px 0px 0px 0px;;
+}
+
+nav h1 a {
+  font-size: 11pt;
+  font-weight: 0;
+}
+.filter-options {height: 58px;}
+.filter-options h2 {padding-top: 5px;}
+.filter-options select{width: 145px;} /* this changes the reposition the select buttons on a small condenced browser */
+
+/* =========== Restauran review system desing ========== */
+.inside #map-container{
+  margin: auto;
+  height: 100%;
+  width:100%;
+}
+/* mobile device view */
+@media device and (max-width: 354px){
+  .filter-options select{
+    width: 164px;
+  }
+}
+/*Trying to get the review header next to image */
+@media screen and (min-width: 507px) and (max-width: 660px){
+  #reviews-container {
+   padding: 100px 5px 80px;
+  }
+  #reviews-container h2 {
+   margin-top: 40px;
+  }
+}
+/*media stle from 507px to 801px */
+@media screen and (min-width: 507px){
+  #restaurant-img,
+  #restaurant-cuisine {
+    max-width: 80%;
+    margin-left: 5px;
+  }
+  section{display: block;}
+  #restaurant-name {
+   padding-top: 30px;
+   padding-left: 5px;
+   margin: 0px 0 -29px;
+  }
+  /* two divs in html are alright left and right with 50% width */
+  .restaurant-imgdiv{
+    width: 48%;
+    padding-top: 46px;
+    float: left;
+  }
+  .restaurant-timetable{
+    width: 50%;
+    float: right;
+  }
+ /* increased the size for better readability and user experience */
+ table#restaurant-hours > tr > td{
+   font-size: 9pt;
+  }
+ #reviews-container {
+    padding: 215px 5px 80px; /*review padding */
+  }
+ #restaurant-name {
+    font-size: 11pt;
+  }
+ #restaurant-address {
+   font-size: 9pt;
+  }
+  #reviews-container {
+   padding: 227px 5px 80px;
+  }
+  #reviews-container h2 {
+   margin-top: 40px;
+  }
+}
+/*media query above 800px */
+@media screen and (min-width: 786px){
+
+ section{display: block;}
+ #restaurant-name {
+   padding-top: 30px;
+   margin: 0px 0 -29px;
+   font-size: 20pt;
+  }
+  #restaurant-address {
+   font-size: 13pt;
+  }
+  /* two divs in html are alright left and right with 50% width */
+  .restaurant-imgdiv{
+   width: 48%;
+   padding-top: 46px;
+   float: left;
+  }
+ .restaurant-timetable{
+   width: 50%;
+   float: right;
+  }
+ /* increased the size for better readability and user experience */
+ table#restaurant-hours > tr > td{
+   font-size: 15pt;
+  }
+ #reviews-container {
+   padding: 360px 5px 80px; /*review padding */
+  }
+  .inside #footer {
+   width: 100%;
+  }
+ table#restaurant-hours > tr > td{
+   font-size: 12pt;
+  }
+  /*header section */
+  .inside header {
+   position: fixed;
+   top: 0;
+   margin: auto;
+   width: 100%;
+   z-index: 1000;
+  }
+  nav {
+    /* width: 101%; */
+    text-align: center;
+  }
+  #breadcrumb {
+    padding: 10px 0px 16px;
+  }
+  /* this margon to first li in the breadcram li's */
+  #breadcrumb li:first-child {
+    margin-left: 30px;
+  }
+}
+@media screen and (min-width: 785px){
+  #restaurant-img, #restaurant-cuisine {
+    max-width: 313px;
+  }
+  #reviews-container {
+    padding: 250px 5px 80px;
+  }
+  #reviews-container h2 {
+    margin-top: 59px;
+    position: relative;
+}
+}
+/* *=========== Ends here ===========  */
+
+
+/* This section applies to the body*/
+@media screen and (min-width: 1216px){
+  body.inside {
+   margin: auto;
+
+  }
+  .inside header {
+   position: relative;
+   top: 0;
+   margin: auto;
+   width: 100%;
+   z-index: 1000;
+  }
+  nav {
+    /* width: 101%; */
+    text-align: center;
+  }
+  #breadcrumb {
+    padding: 10px 0px 16px;
+  }
+  /* this margon to first li in the breadcram li's */
+  #breadcrumb li:first-child {
+    margin-left: 30px;
+  }
+  body.inside{
+    margin: auto;
+    width: 80%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
