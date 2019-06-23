@@ -12,18 +12,11 @@ class DBHelper {
   }
   // Creating indexedDB database
   static openIDB(){
-          let dbPromise = idb.open("restaurant_stage-2",2, upgradeDB => {
-             switch(upgradeDB.oldVersion){
-                     case 0:
-                            upgradeDB.createObjectStore("restaurants", {keyPath:"id"})
-                            .createIndex('restaurants', 'id');
-                      case 1:
-                            upgradeDB.createObjectStore('reviews', {keyPath:'id'})
-                            .createIndex('restaurant_id', 'restaurant_id');
-                    }
-        });
-
-    return dbPromise;
+          let dbPromise = idb.open("restaurant_stage-2",1, upgradeDB => {
+          upgradeDB.createObjectStore("restaurants", {keyPath:"id"})
+          .createIndex('restaurants', 'id');
+          });
+    return dbPromise
   }
 
   // facting data fromt the server, port:1337
@@ -46,13 +39,14 @@ class DBHelper {
             restaurants.forEach(restaurant => restaurantStore.put(restaurant));
           return tx.complete })
           .then(function() { // successfully added restaurants to IndexDB
-           console.log("restaurants added to Index DB successfully")
+           console.log("Restaurants added to Index DB successfully")
           })
           .catch(function(error) {
            // failed adding restaurants to IndexDB
               console.log(error);
           });
   }
+
   /*** Offline data request from indexedDB if there is no connection
      **  Method takes callback parameter
      **
@@ -70,6 +64,7 @@ class DBHelper {
         }
       });
   }
+
     /**
    * Fetch a restaurant by its ID.
    */
@@ -88,6 +83,7 @@ class DBHelper {
       }
     });
   }
+
 
   /**
    * Fetch restaurants by a cuisine type with proper error handling.
@@ -234,74 +230,10 @@ class DBHelper {
       console.log(error);
     });
   }
-// Getting reviews from the server port:1337
-  static fetchAllRestaurantReviews(id) {
-     const promise = new Promise((resolve, reject)=>{
-      fetch(`${DBHelper.DATABASE_URL}/reviews/?restaurant_id=${id}`).then((response) => {
-          console.log('fetched');
-          return response.json();
-      }).then((reviews) => {
-          DBHelper.putReviewInIndexDB(reviews);
-          resolve(reviews);
-      }).catch((err) => {
-          console.log(`Request failed. Reviews failed fetched .. ${err}`);
-            DBHelper.getReviewsFromIndexedDB(id).then((reviews)=>{
-                 console.log('promise hh resolvee',reviews);
-                resolve(reviews);
-            }).catch((error)=>{
-                // console.log('promise  hh reject',error);
-                reject(error);
-                });
-            });
-      });
-    return promise ;
-  }
-// Putting it into the indexedDB
-  static putReviewInIndexDB(reviews){
-    let dbPromise = this.openIDB();
-   return dbPromise.then((db) => {
-        const tx = db.transaction('reviews', 'readwrite');
-        const store = tx.objectStore('reviews');
-        if(Array.isArray(reviews)){
-            reviews.forEach((review)=>{
-                store.put(review);
-            });
-        }else{
-            store.put(reviews,'reviews');
-        }
-        return tx.complete;
-    }).then(()=>{
-         console.log('Reviews Items added to review  store :) ');
-    }).catch((error) => {
-        console.log(error);
-    });
-  }
 
-  // get data when offline
-  static getReviewsFromIndexedDB(restaurant_id){
-    const  promise = new Promise (function(resolve, reject){
-        dbPromise.then((db) => {
-            const tx = db.transaction('reviews', 'readwrite');
-            const store = tx.objectStore('reviews');
-            const index = store.index('restaurant_id');
-            const reviews = index.getAll(restaurant_id);
-            // console.log(reviews.json());
-            // console.log('get items from store ..');
-            return reviews;
-        }).then((reviews)=>{
-            if(reviews){
-                console.log('get items from store ..');
-                resolve(reviews);
-            }
-            else
-                reject('no reviews');
-                console.log(reviews);
-        }).catch((error) => {
-            reject('no data');
-            console.log(error);
-        });
-    });
-    return promise;
-}
+// Favorite update to the server
+
+
+
 
 }

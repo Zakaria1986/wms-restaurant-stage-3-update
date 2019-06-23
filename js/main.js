@@ -160,11 +160,9 @@ createRestaurantHTML = (restaurant) => {
   address.innerHTML = restaurant.address;
   li.append(address);
 
-// adding fave button
- const fav = document.createElement('h4');
-  fav.innerHTML = '★';
+   const fav = document.createElement('h4');
+  fav.innerHTML = '&#x2764';
   fav.classList.add('fav_btn');
-  fav.id = restaurant.id;
   // fav.innerHTML = '☆';
   if(restaurant.is_favorite === "true"){
     fav.classList.add('favourite');
@@ -173,19 +171,20 @@ createRestaurantHTML = (restaurant) => {
   fav.onclick = function(){
     let isFav;
     if(restaurant.is_favorite === "true"){
-      isFav = "false";
+      isFav ="false";
+      fav.setAttribute('aria-label', 'mark as favourite')
     }else{
       isFav = "true";
+      fav.setAttribute('faborite_yes', 'remove as favourite')
     }
     fav.classList.toggle('favourite');
-    /*if(!navigator.onLine){
+    if(!navigator.onLine){
       restaurant.is_favorite = isFav;
       DBHelper.handleFavouriteWheneOffline(isFav,restaurant);
       return;
-    }*/
+    }
     restaurant.is_favorite = isFav;
-    DBHelper.updateFav(restaurant.id, isFav);
-    // DBHelper.handleFavourite(restaurant.id, isFav);
+    DBHelper.handleFavourite(isFav,restaurant);
 
   }
 
