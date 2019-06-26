@@ -46,6 +46,37 @@
       </section>
     </section>
     <!-- end restaurant -->
+     <!-- reviews form -->
+    <section id="form-container">
+      <h3>Leave a review:</h3>
+      <form onsubmit="sendReview()">
+        <div class="formSec">
+          <label  for="name">Name :</label>
+          <input id="name" type="text" placeholder="Your Name" aria-required="true" aria-label="Enter your name" />
+          <div id="name-error"></div>
+        </div>
+        <br>
+        <div class="formSec">
+          <label for="rate">Rate :</label>
+          <select id="rate" aria-label="Select your rating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+        <br>
+        <div class="formSec">
+          <label id="reviewLabel" for="review">Review :</label>
+          <textarea id="review" placeholder="your review here .." aria-required="true" aria-label="Enter your comments"></textarea>
+          <div id="review-error"></div>
+        </div>
+        <br>
+        <button id="send-review">Send</button>
+      </form>
+    </section>
+    <!-- end review form -->
     <!-- Beginning reviews -->
     <section id="reviews-container">
       <ul tabindex="0"  alt="restaurant reviews" id="reviews-list"></ul>
